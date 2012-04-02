@@ -32,7 +32,7 @@
 __version__ = "0.5"
 
 import array
-import Image, ImageFile
+from . import Image, ImageFile
 
 def i16(c,o=0):
     return c[o+1] + (c[o] << 8)
@@ -331,7 +331,8 @@ class JpegImageFile(ImageFile.ImageFile):
         # Extract EXIF information.  This method is highly experimental,
         # and is likely to be replaced with something better in a future
         # version.
-        import TiffImagePlugin, io
+        from . import TiffImagePlugin
+        import io
         def fixup(value):
             if len(value) == 1:
                 return value[0]

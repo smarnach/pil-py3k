@@ -17,7 +17,7 @@
 # See the README file for information on usage and redistribution.
 #
 
-import Image, ImageFilter
+from . import Image, ImageFilter
 from functools import reduce
 
 class _Enhance:

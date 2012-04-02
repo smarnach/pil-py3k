@@ -18,7 +18,7 @@
 
 __version__ = "0.1"
 
-import Image, ImageFile
+from . import Image, ImageFile
 
 def i16(c,i=0):
     return c[1+i] + (c[i] << 8)

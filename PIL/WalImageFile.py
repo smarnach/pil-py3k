@@ -19,7 +19,7 @@
 #    http://www.flipcode.com/tutorials/tut_q2levels.shtml
 # and has been tested with a few sample files found using google.
 
-import Image
+from . import Image
 
 def i32(c, o=0):
     return c[o] + (c[o+1] << 8) + (c[o+2] << 16) + (c[o+3] << 24)

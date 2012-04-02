@@ -1,14 +1,10 @@
 # $Id: selftest.py 2813 2006-10-07 10:11:35Z fredrik $
 # minimal sanity check
 
-import sys
-sys.path.insert(0, ".")
-sys.path.insert(1, "PIL")
-
-import Image
-import ImageDraw
-import ImageFilter
-import ImageMath
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFilter
+from PIL import ImageMath
 
 try:
     Image.core.ping

@@ -9,7 +9,7 @@
 
 __version__ = "1.0"
 
-import Image, ImageFile
+from . import Image, ImageFile
 import io
 
 _Palm8BitColormapValues = (

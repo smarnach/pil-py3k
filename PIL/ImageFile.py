@@ -32,7 +32,7 @@ import io
 import sys
 import traceback
 
-import Image
+from . import Image
 
 MAXBLOCK = 65536
 

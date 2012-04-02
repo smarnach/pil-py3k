@@ -25,7 +25,7 @@
 # See the README file for information on usage and redistribution.
 #
 
-import Image
+from . import Image
 import os, sys
 
 # FIXME: add support for pilfont2 format (see FontFile.py)

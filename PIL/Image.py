@@ -65,8 +65,7 @@ except ImportError as v:
             RuntimeWarning
             )
 
-import ImageMode
-import ImagePalette
+from . import ImageMode
 
 import os, sys
 
@@ -279,27 +278,27 @@ def preinit():
         return
 
     try:
-        import BmpImagePlugin
+        from . import BmpImagePlugin
     except ImportError:
         pass
     try:
-        import GifImagePlugin
+        from . import GifImagePlugin
     except ImportError as err:
         pass
     try:
-        import JpegImagePlugin
+        from . import JpegImagePlugin
     except ImportError:
         pass
     try:
-        import PpmImagePlugin
+        from . import PpmImagePlugin
     except ImportError:
         pass
     try:
-        import PngImagePlugin
+        from . import PngImagePlugin
     except ImportError:
         pass
 #   try:
-#       import TiffImagePlugin
+#       from . import TiffImagePlugin
 #   except ImportError:
 #       pass
 
@@ -336,7 +335,7 @@ def init():
                 try:
                     sys.path.insert(0, directory)
                     try:
-                        __import__(f, globals(), locals(), [])
+                        __import__("", globals(), locals(), [f], 1)
                     finally:
                         del sys.path[0]
                 except ImportError:
@@ -446,6 +445,7 @@ class Image:
         new.size = im.size
         new.palette = self.palette
         if im.mode == "P":
+            from . import ImagePalette
             new.palette = ImagePalette.ImagePalette()
         new.info = self.info.copy()
         return new
@@ -786,7 +786,7 @@ class Image:
 
         self.load()
 
-        from ImageFilter import Filter
+        from .ImageFilter import Filter
         if not isinstance(filter, Filter):
             filter = filter()
 
@@ -995,7 +995,7 @@ class Image:
                 "'offset' is deprecated; use 'ImageChops.offset' instead",
                 DeprecationWarning, stacklevel=2
                 )
-        import ImageChops
+        from . import ImageChops
         return ImageChops.offset(self, xoffset, yoffset)
 
     ##
@@ -1062,7 +1062,7 @@ class Image:
             box = box + (box[0]+size[0], box[1]+size[1])
 
         if isStringType(im):
-            import ImageColor
+            from . import ImageColor
             im = ImageColor.getcolor(im, self.mode)
 
         elif isImageType(im):
@@ -1213,6 +1213,7 @@ class Image:
             import array
             data = array.array("B", data).tostring()
         self.mode = "P"
+        from . import ImagePalette
         self.palette = ImagePalette.raw(rawmode, data)
         self.palette.mode = "RGB"
         self.load() # install new palette
@@ -1572,7 +1573,7 @@ class Image:
     def transform(self, size, method, data=None, resample=NEAREST, fill=1):
         "Transform image"
 
-        import ImageTransform
+        from . import ImageTransform
         if isinstance(method, ImageTransform.Transform):
             method, data = method.getdata()
         if data is None:
@@ -1714,7 +1715,7 @@ def new(mode, size, color=0):
     if isStringType(color):
         # css3-style specifier
 
-        import ImageColor
+        from . import ImageColor
         color = ImageColor.getcolor(color, mode)
 
     return Image()._new(core.fill(mode, size, color))

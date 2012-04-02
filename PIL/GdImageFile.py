@@ -25,7 +25,7 @@
 
 __version__ = "0.1"
 
-import Image, ImageFile, ImagePalette
+from . import Image, ImageFile, ImagePalette
 
 def i16(c):
     return c[1] + (c[0] << 8)

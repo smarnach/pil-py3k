@@ -22,9 +22,9 @@ __version__ = "0.4"
 
 import marshal
 
-import Image, ImageFile, ImagePalette
+from . import Image, ImageFile, ImagePalette
 
-from PngImagePlugin import i16, i32, ChunkStream, _MODES
+from .PngImagePlugin import i16, i32, ChunkStream, _MODES
 
 MAGIC = b"\212ARG\r\n\032\n"
 

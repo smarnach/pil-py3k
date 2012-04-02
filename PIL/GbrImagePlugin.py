@@ -13,7 +13,7 @@
 # See the README file for information on usage and redistribution.
 #
 
-import Image, ImageFile
+from . import Image, ImageFile
 
 def i32(c):
     return c[3] + (c[2] << 8) + (c[1] << 16) + (c[0] << 24)

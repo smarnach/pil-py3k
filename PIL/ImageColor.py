@@ -16,7 +16,7 @@
 # See the README file for information on usage and redistribution.
 #
 
-import Image
+from . import Image
 import re
 
 str2int = int

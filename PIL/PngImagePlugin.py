@@ -31,7 +31,7 @@ __version__ = "0.8.2"
 
 import re
 
-import Image, ImageFile, ImagePalette
+from . import Image, ImageFile, ImagePalette
 
 
 def i16(c):

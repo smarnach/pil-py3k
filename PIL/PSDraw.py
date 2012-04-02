@@ -15,7 +15,7 @@
 # See the README file for information on usage and redistribution.
 #
 
-import EpsImagePlugin
+from . import EpsImagePlugin
 
 ##
 # Simple Postscript graphics interface.
